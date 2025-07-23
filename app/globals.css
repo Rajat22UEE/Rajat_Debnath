@@ -1,9 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+QLD&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 @import "tailwindcss";
+
+:root {
+  --font-hello: 'Playwrite AU QLD', cursive;
+  --font-name: 'Exo 2', sans-serif;
+  --font-title: 'Barlow Semi Condensed', sans-serif;
+  --font-desc: 'Bungee', cursive;
+}
 
 /* Apply dark background and light text globally */
 html,
 body {
-  background-color: #0a0a0a; /* similar to bg-zinc-900 */
+  background-color: #000000; /* similar to bg-zinc-900 */
   color: #f4f4f5;            /* similar to text-zinc-100 */
+}
+
+/* Spotlight effect */
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  top: var(--mouse-y, 50%);
+  left: var(--mouse-x, 50%);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 80%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.card-spotlight:hover::before {
+  width: 400px;
+  height: 400px;
 }
 
